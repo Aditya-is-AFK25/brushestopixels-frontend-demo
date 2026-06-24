@@ -23,6 +23,28 @@ Each piece tells a unique story, crafted with deep intention, beauty, and premiu
 
 To handle order management without a complex database backend, the site uses an elegant, serverless integration flow upon successful payment verification:
 
+```mermaid
+graph TD
+    classDef client fill:#0B1C16,stroke:#C8651B,stroke-width:1.5px,color:#F5EDD6;
+    classDef external fill:#1f332c,stroke:#C9B99A,stroke-width:1.5px,color:#F5EDD6;
+    classDef database fill:#8B6914,stroke:#C8651B,stroke-width:1.5px,color:#F5EDD6;
+    
+    A["User (Client Browser)"]:::client -->|1. Initiates Checkout| B["app.js (Frontend Cart Engine)"]:::client
+    B -->|2. Opens Checkout Overlay| C["Razorpay Web SDK Overlay"]:::external
+    C -->|3. Authorizes Payment| D["Razorpay Payment Gateway"]:::external
+    D -->|4. Returns Verification Success| C
+    C -->|5. Triggers Web Hook & API Calls| B
+    
+    subgraph Serverless Integrations
+        B -->|6a. POST Request| E["Google Apps Script Web App"]:::external
+        E -->|Writes Order Data| F["Google Sheets Database"]:::database
+        
+        B -->|6b. Email Notification API| G["EmailJS API Services"]:::external
+        G -->|Sends Receipt| H["Customer Confirmation Email"]:::client
+        G -->|Sends Order Alert| I["Owner Order Alert (info.brushestopixels@gmail.com)"]:::client
+    end
+```
+
 1. **Razorpay Web SDK**: Implements secure checkout and process payments directly from the client.
 2. **EmailJS Notification Loop**: Triggers dual asynchronous emails:
    * **Customer Confirmation**: Sends a personalized receipt detailing their order ID, ordered items, and shipping address.
