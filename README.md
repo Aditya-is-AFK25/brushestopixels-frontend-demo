@@ -1,5 +1,10 @@
 # BrushestoPixels — Handcrafted Home Décor
 
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Razorpay](https://img.shields.io/badge/Razorpay-022E57?style=flat-square&logo=razorpay&logoColor=white)
+
 Welcome to the frontend repository for **BrushestoPixels**, a premium e-commerce platform showcasing handcrafted luxury home décor, bespoke paintings, artisan shakers, and curated design objects created by artist and founder **Yashwardhan Singh Sayla**.
 
 Each piece tells a unique story, crafted with deep intention, beauty, and premium materials.
@@ -16,6 +21,13 @@ Each piece tells a unique story, crafted with deep intention, beauty, and premiu
 * **Fluid Shopping Cart Sidebar**: Sliding cart overlay supporting item quantities, dynamic shipping fee calculations, and automated checkout transitions.
 * **Full-Screen Lightbox**: High-resolution image browser with keyboard controls, swipe gestures, tap-to-close, and optimized mobile viewport behavior.
 * **Interactive Mascot**: An animated tiger mascot that speaks, reacts to user gestures (dragging, petting), and celebrates cart additions.
+
+  | Action | Animation State | Mascot Speech Reaction | Trigger |
+  | :--- | :--- | :--- | :--- |
+  | **Idle** | `cat-idle` | `"ROAR 🐯"` / Tips | Normal page state |
+  | **Petting** | `cat-happy` | `"PURR 🧡"` | Mouse hover/movement |
+  | **Dragging** | `cat-drag` | Speech vanishes | Mouse/touch drag |
+  | **Add to Cart**| `cat-celebrate`| `"YAY! 🎨"` | Clicking "+ Add to Cart" |
 
 ---
 
@@ -56,6 +68,21 @@ graph TD
 ## 🛠️ Technical Implementation & Architecture
 
 This website was architected and developed by **Aditya Pratap Singh** as a high-fidelity, high-performance multi-page website designed to load instantly and behave with native-like responsiveness.
+
+### 📂 Repository Structure
+
+```text
+├── .agents/              # Workspace configurations & instructions
+├── css/
+│   └── style.css         # Responsive dark-mode styling & keyframes
+├── js/
+│   ├── app.js            # Core cart calculations, lightbox, & UI handlers
+│   ├── products.js       # Product inventory array (IDs 1-75)
+│   └── mascot.js         # Tiger mascot interactivity & physics engine
+├── Martini-Glass/        # High-res assets for product ID 75
+├── index.html            # Main site entrypoint with SEO structured metadata
+└── README.md             # Project documentation
+```
 
 ### 💻 Languages & Technologies Used
 
